@@ -1,0 +1,4 @@
+﻿  Source.cpp
+C:\Users\User\source\repos\Project34\Project34\Source.cpp(72,15): warning C4101: floor: неиспользованная локальная переменная
+C:\Users\User\source\repos\Project34\Project34\Source.cpp(169,14): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  Project34.vcxproj -> C:\Users\User\source\repos\Project34\Debug\Project34.exe
