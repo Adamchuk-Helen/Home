@@ -1,0 +1,125 @@
+#include <iostream>
+#include <vector>
+
+
+using namespace std;
+
+class Train 
+{
+public:
+	Train(){}
+	~Train() {}
+	Train(int nummb_train, double time, int station)
+	{
+		this->nummb_train = nummb_train;
+		this->time = time;
+		this->station = station;
+	}
+	int GetNumb_train()
+	{
+		return nummb_train;
+	}
+	int GetTime()
+	{
+		return time;
+	}
+	int Getstation()
+	{
+		return station;
+	}
+	void PrintTrain()
+	{
+		cout << "\nThe train number: " << this->nummb_train << "\nThe time train arrival : " << this->time << "\nThe train station : " << this->station << endl;
+	}
+	
+private:
+	int nummb_train;
+	double time;
+	int station;
+
+	
+};
+
+class Trainstation
+{
+public:
+	Trainstation() {}
+	~Trainstation() {}
+	void addTrain()
+	{
+		int numb;
+		double time;
+		int station;
+		cout << "Enter number of train" << endl;
+		cin >> numb;
+		cout << "Enter time of train arrival" << endl;
+		cin >> time;
+		cout << "Enter number of train station" << endl;
+		cin >> station;
+		train.push_back(new Train(numb, time, station));
+
+	}
+	
+	void PrintVector() {
+
+
+		for (int i=0; i<train.size(); i++) 
+		{
+			cout << "---------------------------------------------" << endl;
+			train[i]->PrintTrain();
+		}
+	}
+
+	void Choose()
+	{
+		int ch, count=0;
+		cout << "Enter number of train you want to look" << endl;
+		cin >> ch;
+		for (int i = 0; i < train.size(); i++)
+		{
+			if (ch == train[i]->GetNumb_train())
+			{
+				train[i]->PrintTrain();
+				count++;
+			}
+		}
+		if (count == 0)
+		{
+			cout << "The train with number " << ch << " not found" << endl;
+		}
+
+	}
+	void menu()
+	{
+		Trainstation trains;
+		for (;;)
+		{
+			int c;
+			cout << "If you want to add the train, press 1: "<<endl;
+			cout << "If you want to show all trains, press 2: " << endl;
+			cout << "If you want to show some one train, press 3: " << endl;
+			cin >> c;
+			switch (c)
+			{
+			case 1: addTrain(); break;
+			case 2: PrintVector(); break;
+			case 3: Choose(); break;
+			default:
+				return;
+			}
+		}
+
+	}
+
+private:
+	vector<Train*> train;
+};
+
+
+
+int main() {
+
+	Trainstation trains;
+	trains.menu();
+	return 0;
+}
